@@ -25,6 +25,3 @@ django-browser-reload==1.21.0
 # Django Crispy Forms
 django-crispy-forms==2.3
 
-# Tailwind CSS Integration
-django-tailwind==3.6.0
-crispy-tailwind==0.5.0

@@ -1,6 +1,6 @@
 # ACS-GP ISO Certification Website
 
-A modern, responsive Django website for ISO certification services with professional design and custom CSS styling.
+A modern, responsive Django website for ISO certification services with professional design and custom CSS styling. This project has been restructured to use a unified `website` app that consolidates all functionality.
 
 ## Features
 
@@ -10,6 +10,7 @@ A modern, responsive Django website for ISO certification services with professi
 - **About Us**: Detailed company information and team profiles
 - **Responsive**: Mobile-first design that works on all devices
 - **Custom Styling**: Beautiful animations and transitions
+- **Unified Architecture**: Single `website` app containing all functionality
 
 ## Installation
 
@@ -55,7 +56,7 @@ A modern, responsive Django website for ISO certification services with professi
    # Create superuser (optional)
    python manage.py createsuperuser
    
-   # Populate certificate data
+   # Populate certificate data (creates sample certificates)
    python manage.py populate_certificates
    ```
 
@@ -77,40 +78,36 @@ A modern, responsive Django website for ISO certification services with professi
 
 ```
 ISO-Certification/
-├── certificates/          # Certificate app
-│   ├── management/        # Custom management commands
-│   ├── migrations/        # Database migrations
-│   ├── models.py         # Certificate models
-│   └── views.py          # Certificate views
+├── website/             # Main website app (consolidated)
+│   ├── management/      # Custom management commands
+│   │   └── commands/   # populate_certificates.py
+│   ├── migrations/      # Database migrations
+│   ├── models.py       # Certificate and main models
+│   ├── views.py        # All views (main + certificates)
+│   ├── admin.py        # Admin configurations
+│   ├── urls.py         # URL patterns
+│   ├── settings.py     # Django settings
+│   ├── wsgi.py         # WSGI configuration
+│   └── asgi.py         # ASGI configuration
 |
-├── main/                 # Main app
-│   ├── migrations/       # Database migrations
-│   ├── models.py        # Main models
-│   └── views.py         # Main views
+├── static/             # Static files
+│   ├── css/           # Custom CSS files
+│   ├── images/        # Images
+│   └── js/            # JavaScript files
 |
-├── iso_website/         # Django project settings
-│   ├── settings.py      # Project settings
-│   └── urls.py         # Main URL configuration
+├── templates/          # HTML templates
+│   ├── components/    # Reusable components
+│   ├── main/         # Main page templates
+│   └── certificates/ # Certificate templates
 |
-├── static/              # Static files
-│   ├── css/            # Custom CSS files
-│   ├── images/         # Images
-│   └── js/             # JavaScript files
-|
-├── templates/           # HTML templates
-│   ├── components/     # Reusable components
-│   ├── main/          # Main page templates
-│   └── certificates/  # Certificate templates
-|
-├── requirements.txt    # Python dependencies
-└── manage.py          # Django management script
+├── requirements.txt   # Python dependencies
+└── manage.py         # Django management script
 ```
 
 ## Dependencies
 
 - **Django 5.2.6**: Web framework
 - **Pillow 10.4.0**: Image processing
-- **django-tailwind 3.6.0**: Tailwind CSS integration
 - **whitenoise 6.8.2**: Static file serving
 - **django-crispy-forms 2.3**: Form styling
 
@@ -118,10 +115,16 @@ ISO-Certification/
 
 ### Adding New Certificates
 
+**Option 1: Using Django Admin (Recommended)**
 1. Go to Django Admin: `http://127.0.0.1:8000/admin/`
 2. Navigate to "Certificates" section
 3. Add new certificate with all required fields
 4. The certificate will automatically appear on the website
+
+**Option 2: Using Management Command**
+1. Edit `website/management/commands/populate_certificates.py`
+2. Add your certificate data to the `certificates_data` dictionary
+3. Run: `python manage.py populate_certificates`
 
 ### Styling Changes
 
@@ -135,6 +138,9 @@ ISO-Certification/
 - **About Page**: Edit `templates/main/about.html`
 - **Contact Page**: Edit `templates/main/contact.html`
 - **Certificate Pages**: Edit `templates/certificates/`
+- **Views**: Edit `website/views.py` for view logic
+- **Models**: Edit `website/models.py` for data models
+- **URLs**: Edit `website/urls.py` for URL patterns
 
 ## Production Deployment
 
