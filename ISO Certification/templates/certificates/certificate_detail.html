@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ certificate.name }} - ACS-GP{% endblock %}
+
+{% block content %}
+<div class="certificate-detail-container">
+    <!-- Decorative Rotating Icons -->
+    <div class="certificate-rotating-icon certificate-rotating-icon-1">
+        <i class="fas fa-award"></i>
+    </div>
+    <div class="certificate-rotating-icon certificate-rotating-icon-2">
+        <i class="fas fa-user-cog"></i>
+    </div>
+    <div class="certificate-rotating-icon certificate-rotating-icon-3">
+        <i class="fas fa-file-alt"></i>
+    </div>
+    <div class="certificate-rotating-icon certificate-rotating-icon-4">
+        <i class="fas fa-shield-alt"></i>
+    </div>
+
+    <div class="certificate-detail-content">
+        <!-- Header Section -->
+        <div class="certificate-header">
+            <div class="certificate-icon-container">
+                <div class="certificate-icon-wrapper">
+                    <i class="{{ certificate.icon }} certificate-main-icon"></i>
+                    <!-- Rotating border -->
+                    <div class="certificate-rotating-border"></div>
+                </div>
+            </div>
+            <h1 class="certificate-title">{{ certificate.name }}</h1>
+            <p class="certificate-subtitle">{% if certificate.subtitle %}{{ certificate.subtitle }}{% else %}{{ certificate.description }}{% endif %}</p>
+            <div class="certificate-badges">
+                <span class="certificate-badge">Gold Rated Certification</span>
+                <span class="certificate-badge">IASCB Accredited</span>
+            </div>
+        </div>
+
+        <!-- Horizontal Certifications List -->
+        <div class="certificate-navigation-pills">
+            <ul class="certificate-pills-list">
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-9001' %}" class="certificate-pill-link{% if certificate.name == 'ISO 9001:2015' %} certificate-pill-active{% endif %}">ISO 9001 2015</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-14001' %}" class="certificate-pill-link{% if certificate.name == 'ISO 14001:2015' %} certificate-pill-active{% endif %}">ISO 14001 2015</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-45001' %}" class="certificate-pill-link{% if certificate.name == 'ISO 45001:2018' %} certificate-pill-active{% endif %}">ISO 45001 2018</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-20000' %}" class="certificate-pill-link{% if certificate.name == 'ISO 20000:2011' %} certificate-pill-active{% endif %}">ISO 20000 2011</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-27001' %}" class="certificate-pill-link{% if certificate.name == 'ISO 27001:2005' %} certificate-pill-active{% endif %}">ISO 27001 2005</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-22000' %}" class="certificate-pill-link{% if certificate.name == 'ISO 22000:2005' %} certificate-pill-active{% endif %}">ISO-22000-2005</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-22483' %}" class="certificate-pill-link{% if certificate.name == 'ISO 22483:2020' %} certificate-pill-active{% endif %}">ISO 22483 2020</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-29001' %}" class="certificate-pill-link{% if certificate.name == 'ISO 29001:2010' %} certificate-pill-active{% endif %}">ISO 29001 2010</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-30000' %}" class="certificate-pill-link{% if certificate.name == 'ISO 30000:2009' %} certificate-pill-active{% endif %}">ISO 30000 2009</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'iso-17025' %}" class="certificate-pill-link{% if certificate.name == 'ISO/IEC 17025:2005' %} certificate-pill-active{% endif %}">ISO/IEC 17025 2005</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'ohsas-8001' %}" class="certificate-pill-link{% if certificate.name == 'OHSAS 8001:2007' %} certificate-pill-active{% endif %}">OHSAS 8001 2007</a>
+                </li>
+                <li class="certificate-pill-item">
+                    <a href="{% url 'certificate_detail' 'haccp' %}" class="certificate-pill-link{% if certificate.name == 'HACCP' %} certificate-pill-active{% endif %}">HACCP</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content and Cards Grid -->
+        <div class="certificate-main-content">
+            <div class="certificate-cards-grid">
+                <!-- Left Column - Overview -->
+                <div class="certificate-overview-card">
+                    <!-- Text Section -->
+                    <div class="certificate-overview-text">
+                        <h2 class="certificate-section-title">Overview</h2>
+                        <div class="certificate-list">
+                            {% for item in certificate.get_overview_list %}
+                            <div class="certificate-list-item">
+                                <i class="fas fa-check-circle certificate-list-icon"></i>
+                                <p class="certificate-list-text">{{ item }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- Image Section -->
+                    <div class="certificate-overview-image">
+                        {% if certificate.image_overview %}
+                        <img
+                            src="{{ certificate.image_overview.url }}"
+                            alt="{{ certificate.name }} Overview"
+                            class="certificate-image"
+                        />
+                        {% else %}
+                        {% if certificate.name == "ISO 30000:2009" %}
+                        <img
+                            src="{% static 'images/Safety2.jpeg' %}"
+                            alt="{{ certificate.name }} Overview"
+                            class="certificate-image"
+                        />
+                        {% elif certificate.name == "ISO/IEC 17025:2005" %}
+                        <img
+                            src="{% static 'images/Mastering ISO_IEC 27001_2022 - Exercise 10 Walkthrough.jpeg' %}"
+                            alt="{{ certificate.name }} Overview"
+                            class="certificate-image"
+                        />
+                        {% elif certificate.name == "OHSAS 8001:2007" %}
+                        <img
+                            src="{% static 'images/Safety1.jpeg' %}"
+                            alt="{{ certificate.name }} Overview"
+                            class="certificate-image"
+                        />
+                        {% elif certificate.name == "HACCP" %}
+                        <img
+                            src="{% static 'images/Business.jpeg' %}"
+                            alt="{{ certificate.name }} Overview"
+                            class="certificate-image"
+                        />
+                        {% else %}
+                        <img
+                            src="{% static 'images/Safety2.jpeg' %}"
+                            alt="{{ certificate.name }} Overview"
+                            class="certificate-image"
+                        />
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Right Column - Benefits -->
+                <div class="certificate-benefits-card">
+                    <div class="certificate-benefits-content">
+                        <h2 class="certificate-section-title">Benefits</h2>
+                        <div class="certificate-list">
+                            {% for item in certificate.get_benefits_list %}
+                            <div class="certificate-list-item">
+                                <i class="fas fa-check-circle certificate-list-icon"></i>
+                                <p class="certificate-list-text">{{ item }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- Bottom Image Section -->
+                    <div class="certificate-benefits-image">
+                        {% if certificate.image_benefits %}
+                        <img
+                            src="{{ certificate.image_benefits.url }}"
+                            alt="{{ certificate.name }} Benefits"
+                            class="certificate-benefits-img"
+                        />
+                        {% else %}
+                        {% if certificate.name == "ISO 30000:2009" %}
+                        <img
+                            src="{% static 'images/Mastering ISO_IEC 27001_2022 - Exercise 4 Walkthrough.jpeg' %}"
+                            alt="{{ certificate.name }} Benefits"
+                            class="certificate-benefits-img"
+                        />
+                        {% elif certificate.name == "ISO/IEC 17025:2005" %}
+                        <img
+                            src="{% static 'images/Mastering ISO_IEC 27001_2022 - Exercise 17 Walkthrough.jpeg' %}"
+                            alt="{{ certificate.name }} Benefits"
+                            class="certificate-benefits-img"
+                        />
+                        {% elif certificate.name == "OHSAS 8001:2007" %}
+                        <img
+                            src="{% static 'images/Safety2.jpeg' %}"
+                            alt="{{ certificate.name }} Benefits"
+                            class="certificate-benefits-img"
+                        />
+                        {% elif certificate.name == "HACCP" %}
+                        <img
+                            src="{% static 'images/Training.jpeg' %}"
+                            alt="{{ certificate.name }} Benefits"
+                            class="certificate-benefits-img"
+                        />
+                        {% else %}
+                        <img
+                            src="{% static 'images/Mastering ISO_IEC 27001_2022 - Exercise 4 Walkthrough.jpeg' %}"
+                            alt="{{ certificate.name }} Benefits"
+                            class="certificate-benefits-img"
+                        />
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Objectives, Outcomes, and Assessments -->
+            <div class="certificate-learning-grid">
+                <!-- Learning Objectives -->
+                <div class="certificate-learning-card certificate-objectives-card">
+                    <h2 class="certificate-learning-title">Learning Objectives</h2>
+                    <ul class="certificate-learning-list">
+                        {% for objective in certificate.get_objectives_list %}
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">{{ objective }}</span>
+                        </li>
+                        {% empty %}
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Understand the principles and requirements of {{ certificate.name }}</span>
+                        </li>
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Learn implementation strategies and best practices</span>
+                        </li>
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Develop skills for continuous improvement and compliance</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Learning Outcomes -->
+                <div class="certificate-learning-card certificate-outcomes-card">
+                    <h2 class="certificate-learning-title">Learning Outcomes</h2>
+                    <ul class="certificate-learning-list">
+                        {% for outcome in certificate.get_outcomes_list %}
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">{{ outcome }}</span>
+                        </li>
+                        {% empty %}
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Ability to implement {{ certificate.name }} requirements</span>
+                        </li>
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Enhanced understanding of quality management principles</span>
+                        </li>
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Improved skills in documentation and compliance</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Assessments -->
+                <div class="certificate-learning-card certificate-assessments-card">
+                    <h2 class="certificate-learning-title">Assessments</h2>
+                    <ul class="certificate-learning-list">
+                        {% for assessment in certificate.get_assessments_list %}
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">{{ assessment }}</span>
+                        </li>
+                        {% empty %}
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Written examination on {{ certificate.name }} principles</span>
+                        </li>
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Practical implementation case study</span>
+                        </li>
+                        <li class="certificate-learning-item">
+                            <i class="fas fa-check-circle certificate-learning-icon"></i>
+                            <span class="certificate-learning-text">Final project and certification assessment</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Certification Process -->
+            <div class="certificate-process-section">
+                <h2 class="certificate-process-title">Certification Process</h2>
+                <div class="certificate-process-container">
+                    {% for step in certificate.steps.all %}
+                    <div class="certificate-process-step">
+                        <div class="certificate-step-icon">
+                            <i class="{{ step.icon }}"></i>
+                        </div>
+                        <h3 class="certificate-step-title">{{ step.title }}</h3>
+                        <p class="certificate-step-description">{{ step.description }}</p>
+                    </div>
+                    {% if not forloop.last %}
+                    <div class="certificate-process-arrow certificate-process-arrow-desktop">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="certificate-process-arrow certificate-process-arrow-mobile">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="certificate-contact-section">
+                <h2 class="certificate-contact-title">Get Certified Today</h2>
+                <p class="certificate-contact-description">Join over 2,000+ companies who trust ACS-GP for their certification needs</p>
+                <div class="certificate-contact-buttons">
+                    <a href="{% url 'contact' %}" class="certificate-contact-button certificate-contact-button-primary">
+                        Contact Us
+                    </a>
+                    <button class="certificate-contact-button certificate-contact-button-secondary">
+                        Download Brochure
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

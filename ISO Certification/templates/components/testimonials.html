@@ -1,0 +1,181 @@
+{% load static %}
+<section id="testimonials" class="testimonials-section">
+    <div class="container mx-auto px-4">
+        <div class="testimonials-header animate-fade-in-up">
+            <h2 class="testimonials-title animate-text-reveal animate-delay-200">
+                Words from Our Clients
+            </h2>
+            <p class="testimonials-description animate-text-reveal animate-delay-300">
+                Discover why leading organizations trust us for their certification needs.
+            </p>
+        </div>
+
+        <div class="testimonials-carousel">
+            <!-- Navigation Buttons -->
+            <button class="testimonials-nav-btn testimonials-nav-prev" onclick="prevTestimonial()" aria-label="Previous testimonial">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button class="testimonials-nav-btn testimonials-nav-next" onclick="nextTestimonial()" aria-label="Next testimonial">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Testimonial Container -->
+            <div class="testimonials-container">
+                <div class="testimonials-slide active" id="testimonial-0">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Efficient problem-solving, insightful market analysis, and actionable plans made the consulting experience invaluable to our business's success."
+                            </p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-rating">
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                            </div>
+                            <p class="testimonial-author">James Bond</p>
+                            <p class="testimonial-position">CEO & Head of Sky Tech Inc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonials-slide" id="testimonial-1">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "The ISO certification process was smooth and professional. Their expertise in quality management systems is outstanding."
+                            </p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-rating">
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                            </div>
+                            <p class="testimonial-author">Sarah Johnson</p>
+                            <p class="testimonial-position">Operations Director, Global Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonials-slide" id="testimonial-2">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Outstanding support throughout our certification journey. The team's knowledge and guidance were instrumental to our success."
+                            </p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-rating">
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                                <span class="testimonial-star">★</span>
+                            </div>
+                            <p class="testimonial-author">Michael Chen</p>
+                            <p class="testimonial-position">Quality Manager, Tech Innovations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicators -->
+            <div class="testimonials-indicators">
+                <button class="testimonials-indicator active" onclick="goToTestimonial(0)" aria-label="Go to testimonial 1"></button>
+                <button class="testimonials-indicator" onclick="goToTestimonial(1)" aria-label="Go to testimonial 2"></button>
+                <button class="testimonials-indicator" onclick="goToTestimonial(2)" aria-label="Go to testimonial 3"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+let currentTestimonial = 0;
+const totalTestimonials = 3;
+let isTransitioning = false;
+
+function showTestimonial(index, direction = 0) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    const testimonials = document.querySelectorAll('.testimonials-slide');
+    const currentSlide = testimonials[currentTestimonial];
+    const nextSlide = testimonials[index];
+    
+    // Remove all classes
+    testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+    });
+    
+    if (direction > 0) {
+        // Moving to next (right arrow clicked)
+        currentSlide.classList.add('slide-out-left');
+        nextSlide.classList.add('slide-in-right');
+    } else if (direction < 0) {
+        // Moving to previous (left arrow clicked)
+        currentSlide.classList.add('slide-out-right');
+        nextSlide.classList.add('slide-in-left');
+    } else {
+        // Direct jump (indicators)
+        nextSlide.classList.add('active');
+        updateIndicators(index);
+        isTransitioning = false;
+        return;
+    }
+    
+    // After transition completes, set the new active slide
+    setTimeout(() => {
+        nextSlide.classList.remove('slide-in-left', 'slide-in-right');
+        nextSlide.classList.add('active');
+        updateIndicators(index);
+        isTransitioning = false;
+    }, 500); // Match the CSS transition duration
+}
+
+function updateIndicators(index) {
+    const indicators = document.querySelectorAll('.testimonials-indicator');
+    indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === index);
+    });
+}
+
+function nextTestimonial() {
+    const nextIndex = (currentTestimonial + 1) % totalTestimonials;
+    showTestimonial(nextIndex, -1);
+    currentTestimonial = nextIndex;
+}
+
+function prevTestimonial() {
+    const prevIndex = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+    showTestimonial(prevIndex, 1);
+    currentTestimonial = prevIndex;
+}
+
+function goToTestimonial(index) {
+    if (index === currentTestimonial) return;
+    showTestimonial(index, 0);
+    currentTestimonial = index;
+}
+
+// Auto-advance testimonials every 5 seconds
+setInterval(nextTestimonial, 5000);
+
+// Initialize testimonials
+showTestimonial(0, 0);
+</script>

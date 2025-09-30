@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - ACS-GP{% endblock %}
+
+{% block content %}
+<div class="contact-page-container">
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <div class="contact-hero-text">
+                <span class="contact-hero-badge">Get in Touch</span>
+                <h1 class="contact-hero-title">Contact Our Expert Team</h1>
+                <p class="contact-hero-description">
+                    Have questions about our ISO certification services? Our expert team is here to help you navigate the certification process and achieve your quality management goals.
+                </p>
+            </div>
+            <div class="contact-hero-image">
+                <img src="{% static 'images/contact.jpeg' %}" alt="Contact Us" class="contact-hero-img" />
+                <div class="contact-hero-overlay"></div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="contact-floating-element contact-floating-phone">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-floating-element contact-floating-envelope">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-floating-element contact-floating-location">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info Section -->
+    <section class="contact-main">
+        <div class="contact-main-content">
+            <div class="contact-form-section">
+                <div class="contact-form-header">
+                    <h2 class="contact-form-title">Send us a Message</h2>
+                    <p class="contact-form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
+                </div>
+                
+                <form class="contact-form-main">
+                    <div class="contact-form-row">
+                        <div class="contact-form-group">
+                            <label class="contact-form-label">First Name *</label>
+                            <input type="text" class="contact-form-input" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="contact-form-group">
+                            <label class="contact-form-label">Last Name *</label>
+                            <input type="text" class="contact-form-input" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-row">
+                        <div class="contact-form-group">
+                            <label class="contact-form-label">Email Address *</label>
+                            <input type="email" class="contact-form-input" placeholder="your@email.com" required>
+                        </div>
+                        <div class="contact-form-group">
+                            <label class="contact-form-label">Phone Number</label>
+                            <input type="tel" class="contact-form-input" placeholder="+1 (555) 123-4567">
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-group">
+                        <label class="contact-form-label">Company Name</label>
+                        <input type="text" class="contact-form-input" placeholder="Your company name">
+                    </div>
+                    
+                    <div class="contact-form-group">
+                        <label class="contact-form-label">Service Interest</label>
+                        <select class="contact-form-select">
+                            <option value="">Select a service</option>
+                            <option value="iso-9001">ISO 9001:2015</option>
+                            <option value="iso-14001">ISO 14001:2015</option>
+                            <option value="iso-45001">ISO 45001:2018</option>
+                            <option value="iso-27001">ISO 27001:2013</option>
+                            <option value="iso-30000">ISO 30000:2009</option>
+                            <option value="iso-17025">ISO/IEC 17025:2005</option>
+                            <option value="ohsas-8001">OHSAS 8001:2007</option>
+                            <option value="haccp">HACCP</option>
+                            <option value="consultation">General Consultation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="contact-form-group">
+                        <label class="contact-form-label">Message *</label>
+                        <textarea class="contact-form-textarea" placeholder="Tell us about your certification needs..." rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="contact-form-checkbox">
+                        <input type="checkbox" id="newsletter" class="contact-checkbox-input">
+                        <label for="newsletter" class="contact-checkbox-label">
+                            Subscribe to our newsletter for ISO certification updates and industry insights
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="contact-form-submit">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="contact-info-section">
+                <div class="contact-info-header">
+                    <h2 class="contact-info-title">Get in Touch</h2>
+                    <p class="contact-info-subtitle">Multiple ways to reach our team</p>
+                </div>
+                
+                <div class="contact-info-cards">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3 class="contact-info-card-title">Email Us</h3>
+                            <p class="contact-info-text">info@acs-gp.com</p>
+                            <p class="contact-info-text">support@acs-gp.com</p>
+                            <span class="contact-info-note">We respond within 24 hours</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3 class="contact-info-card-title">Call Us</h3>
+                            <p class="contact-info-text">+1 (555) 123-4567</p>
+                            <p class="contact-info-text">+1 (555) 123-4568</p>
+                            <span class="contact-info-note">Mon-Fri 9AM-6PM EST</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3 class="contact-info-card-title">Visit Us</h3>
+                            <p class="contact-info-text">123 Certification Street<br>Suite 100, Business District<br>New York, NY 10001</p>
+                            <span class="contact-info-note">By appointment only</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3 class="contact-info-card-title">Business Hours</h3>
+                            <p class="contact-info-text">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p class="contact-info-text">Saturday: 10:00 AM - 4:00 PM</p>
+                            <span class="contact-info-note">Sunday: Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="contact-faq">
+        <div class="contact-faq-content">
+            <div class="contact-faq-header">
+                <h2 class="contact-faq-title">Frequently Asked Questions</h2>
+                <p class="contact-faq-subtitle">Quick answers to common questions about our services</p>
+            </div>
+            
+            <div class="contact-faq-list">
+                <div class="contact-faq-item">
+                    <div class="contact-faq-question">
+                        <h3>How long does the certification process take?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="contact-faq-answer">
+                        <p>The certification process typically takes 3-6 months depending on the ISO standard and your organization's current state. We provide a detailed timeline during our initial consultation.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-faq-item">
+                    <div class="contact-faq-question">
+                        <h3>What is the cost of ISO certification?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="contact-faq-answer">
+                        <p>Certification costs vary based on the ISO standard, organization size, and complexity. We provide detailed quotes after understanding your specific requirements during our free consultation.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-faq-item">
+                    <div class="contact-faq-question">
+                        <h3>Do you provide training for our team?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="contact-faq-answer">
+                        <p>Yes, we offer comprehensive training programs for your team members, including awareness training, internal auditor training, and management system implementation training.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-faq-item">
+                    <div class="contact-faq-question">
+                        <h3>What happens after we get certified?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="contact-faq-answer">
+                        <p>We provide ongoing support including surveillance audits, continuous improvement guidance, and help with recertification to ensure you maintain your certification status.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="contact-map">
+        <div class="contact-map-content">
+            <h2 class="contact-map-title">Find Us</h2>
+            <div class="contact-map-container">
+                <div class="contact-map-placeholder">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Interactive Map Coming Soon</p>
+                    <span>123 Certification Street, New York, NY 10001</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+// FAQ Accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.contact-faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.contact-faq-question');
+        const answer = item.querySelector('.contact-faq-answer');
+        const icon = question.querySelector('i');
+        
+        question.addEventListener('click', () => {
+            const isOpen = answer.style.display === 'block';
+            
+            // Close all other FAQ items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.querySelector('.contact-faq-answer').style.display = 'none';
+                    otherItem.querySelector('.contact-faq-question i').style.transform = 'rotate(0deg)';
+                    otherItem.classList.remove('contact-faq-active');
+                }
+            });
+            
+            // Toggle current item
+            if (isOpen) {
+                answer.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+                item.classList.remove('contact-faq-active');
+            } else {
+                answer.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+                item.classList.add('contact-faq-active');
+            }
+        });
+    });
+});
+
+// Form validation and submission
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.contact-form-main');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#e53e3e';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#e2e8f0';
+                }
+            });
+            
+            if (isValid) {
+                // Show success message (in real implementation, this would submit to server)
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                form.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

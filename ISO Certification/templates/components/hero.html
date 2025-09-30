@@ -1,0 +1,93 @@
+{% load static %}
+<section id="home" class="hero-section">
+    <!-- Background Shapes -->
+    <div class="hero-background-shapes">
+        <div class="hero-shape hero-shape-right"></div>
+        <div class="hero-shape hero-shape-left"></div>
+    </div>
+
+    <!-- Decorative Icons -->
+    <div class="hero-decorative-icon hero-decorative-icon-top">
+        <i class="fas fa-certificate"></i>
+    </div>
+    <div class="hero-decorative-icon hero-decorative-icon-bottom">
+        <i class="fas fa-shield-alt"></i>
+    </div>
+
+    <div class="hero-container">
+        <div class="hero-grid">
+            <!-- Left Content -->
+            <div class="hero-content animate-fade-in-left">
+                <span class="hero-subtitle animate-text-reveal animate-delay-200">
+                    Welcome to ISO Excellence
+                </span>
+                <h1 class="hero-title animate-text-reveal animate-delay-300">
+                    Empowering Your
+                    <span class="hero-title-accent">Business Success</span>
+                    Through ISO Excellence
+                </h1>
+                <p class="hero-description animate-text-reveal animate-delay-400">
+                    Elevate your organization with internationally recognized ISO certifications. Expert guidance, comprehensive support, and proven success.
+                </p>
+                <div class="hero-form-container animate-text-reveal animate-delay-500">
+                    <div class="hero-input-wrapper">
+                        <input
+                            type="email"
+                            placeholder="Your email address..."
+                            class="hero-email-input"
+                        />
+                    </div>
+                    <button class="hero-cta-button">
+                        Get Certificate
+                    </button>
+                </div>
+                <p class="hero-cta-text animate-text-reveal animate-delay-600">
+                    Join 2,000+ companies who've reached certification excellence
+                </p>
+            </div>
+
+            <!-- Image Section -->
+            <div class="hero-image-container animate-fade-in-right">
+                <div class="hero-image-wrapper">
+                    <img
+                        src="{% static 'images/Business.jpeg' %}"
+                        alt="ISO Certification"
+                        class="hero-image"
+                    />
+                    <div class="hero-image-overlay"></div>
+                </div>
+
+                <!-- Floating Elements -->
+                <div class="hero-floating-icon hero-floating-icon-top-right">
+                    <i class="fas fa-certificate hero-floating-icon-icon"></i>
+                </div>
+
+                <div class="hero-floating-icon hero-floating-icon-bottom-left">
+                    <i class="fas fa-shield-alt hero-floating-icon-icon"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Box - Hidden on smaller screens, visible on larger screens -->
+        <div class="hero-stats-box animate-scale-in animate-delay-800">
+            <div class="hero-stats-grid">
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">3K+</div>
+                    <div class="hero-stat-label">Certified Trainers</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">2K+</div>
+                    <div class="hero-stat-label">Certified Companies</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">98%</div>
+                    <div class="hero-stat-label">Success Rate</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">10K+</div>
+                    <div class="hero-stat-label">Lead Auditors</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

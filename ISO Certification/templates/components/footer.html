@@ -1,0 +1,125 @@
+{% load static %}
+<!-- Newsletter Section -->
+<section class="footer-newsletter">
+    <!-- Background Design Elements -->
+    <div class="footer-newsletter-bg">
+        <!-- Gradient Overlay -->
+        <div class="footer-newsletter-gradient"></div>
+        
+        <!-- Decorative Circles -->
+        <div class="footer-newsletter-circle footer-newsletter-circle-1"></div>
+        <div class="footer-newsletter-circle footer-newsletter-circle-2"></div>
+        
+        <!-- Diagonal Lines -->
+        <div class="footer-newsletter-lines"></div>
+    </div>
+
+    <div class="container mx-auto px-4 footer-newsletter-content">
+        <div class="footer-newsletter-form">
+            <h2 class="footer-newsletter-title">
+                Stay in touch
+            </h2>
+            <p class="footer-newsletter-description">
+                Get updates on ISO certifications, training programs, and industry insights
+            </p>
+            <div class="footer-newsletter-input-container">
+                <input type="email" placeholder="Enter your email address" class="footer-newsletter-input">
+                <button class="footer-newsletter-button">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Decorative Elements -->
+    <div class="footer-newsletter-line footer-newsletter-line-top"></div>
+    <div class="footer-newsletter-line footer-newsletter-line-bottom"></div>
+</section>
+
+<!-- Main Footer -->
+<footer class="footer-main">
+    <div class="container mx-auto px-4">
+        <div class="footer-grid">
+            <!-- Company Info -->
+            <div class="footer-company">
+                <h3 class="footer-company-title">ISO Training</h3>
+                <p class="footer-company-description">
+                    Your trusted partner for ISO certifications, quality management systems, and professional training solutions.
+                </p>
+                <div class="footer-social-links">
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 class="footer-section-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}" class="footer-link">Home</a></li>
+                    <li><a href="{% url 'about' %}" class="footer-link">About Us</a></li>
+                    <li><a href="{% url 'home' %}#services" class="footer-link">Our Services</a></li>
+                    <li><a href="{% url 'home' %}#certifications" class="footer-link">Certifications</a></li>
+                    <li><a href="{% url 'contact' %}" class="footer-link">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h3 class="footer-section-title">Our Services</h3>
+                <ul class="footer-links">
+                    <li><span class="footer-service-item">ISO Certifications</span></li>
+                    <li><span class="footer-service-item">Quality Management</span></li>
+                    <li><span class="footer-service-item">Training Programs</span></li>
+                    <li><span class="footer-service-item">Compliance Solutions</span></li>
+                    <li><span class="footer-service-item">Audit Services</span></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3 class="footer-section-title">Contact</h3>
+                <div class="footer-contact-info">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+                        <p class="footer-contact-text">
+                            123 Certification Street,<br />
+                            Business District, 12345
+                        </p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone footer-contact-icon"></i>
+                        <p class="footer-contact-text">+1 (234) 567-8900</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope footer-contact-icon"></i>
+                        <p class="footer-contact-text">info@isotraining.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright">
+                    © 2024 ISO Training. All rights reserved.
+                </p>
+                <div class="footer-bottom-links">
+                    <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                    <a href="#" class="footer-bottom-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

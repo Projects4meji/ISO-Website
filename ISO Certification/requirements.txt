@@ -1,0 +1,30 @@
+# Django Web Framework
+Django==5.2.6
+
+# ASGI Server
+asgiref==3.9.2
+
+# Database
+sqlparse==0.5.3
+
+# Timezone Data
+tzdata==2025.2
+
+# Image Processing
+Pillow==10.4.0
+
+# Static Files Serving
+whitenoise==6.8.2
+
+# Django Extensions (for development)
+django-extensions==3.2.3
+
+# Django Browser Reload (for development)
+django-browser-reload==1.21.0
+
+# Django Crispy Forms
+django-crispy-forms==2.3
+
+# Tailwind CSS Integration
+django-tailwind==3.6.0
+crispy-tailwind==0.5.0

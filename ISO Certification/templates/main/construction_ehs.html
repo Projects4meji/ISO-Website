@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Construction EHS - ACS-GP{% endblock %}
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const benefitsSection = document.querySelector('.construction-ehs-benefits');
+    const benefitsImage = document.querySelector('.construction-ehs-benefits-image');
+    const benefitsContent = document.querySelector('.construction-ehs-benefits-content');
+    
+    function updateLayout() {
+        if (window.innerWidth >= 1024) {
+            // Desktop layout - side by side
+            benefitsSection.style.flexDirection = 'row';
+            benefitsSection.style.alignItems = 'center';
+            benefitsImage.style.width = '50%';
+            benefitsImage.style.flexShrink = '0';
+            benefitsContent.style.width = '50%';
+            benefitsContent.style.flexShrink = '0';
+        } else if (window.innerWidth >= 768) {
+            // Tablet layout - stacked with centered image
+            benefitsSection.style.flexDirection = 'column';
+            benefitsSection.style.alignItems = 'center';
+            benefitsImage.style.width = '100%';
+            benefitsImage.style.maxWidth = '500px';
+            benefitsImage.style.margin = '0 auto';
+            benefitsImage.style.flexShrink = '0';
+            benefitsContent.style.width = '100%';
+            benefitsContent.style.flexShrink = '0';
+        } else {
+            // Mobile layout - stacked
+            benefitsSection.style.flexDirection = 'column';
+            benefitsSection.style.alignItems = 'center';
+            benefitsImage.style.width = '100%';
+            benefitsImage.style.maxWidth = 'none';
+            benefitsImage.style.margin = '0';
+            benefitsImage.style.flexShrink = '0';
+            benefitsContent.style.width = '100%';
+            benefitsContent.style.flexShrink = '0';
+        }
+    }
+    
+    // Update on load
+    updateLayout();
+    
+    // Update on resize
+    window.addEventListener('resize', updateLayout);
+});
+</script>
+
+{% block content %}
+<div class="construction-ehs-container">
+    
+    <!-- Animated Background Blobs -->
+    <div class="construction-ehs-blob construction-ehs-blob-1"></div>
+    <div class="construction-ehs-blob construction-ehs-blob-2"></div>
+
+    <!-- Hero Section -->
+    <div class="construction-ehs-hero">
+        <div class="construction-ehs-hero-content">
+            <span class="construction-ehs-subtitle">Industrial Occupational Solutions</span>
+            <h1 class="construction-ehs-title">Construction EHS</h1>
+            <p class="construction-ehs-description">
+                Our tailored solutions, designed under OSHA standards, cater to various industries, offering comprehensive guidance worldwide.
+            </p>
+            <div class="construction-ehs-cta">
+                <button class="construction-ehs-button">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="construction-ehs-features">
+        <!-- Construction Sector -->
+        <div class="construction-ehs-feature-card">
+            <div class="construction-ehs-feature-icon">
+                <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3 class="construction-ehs-feature-title">Construction Sector</h3>
+            <p class="construction-ehs-feature-desc">Comprehensive guidance and tailored solutions designed under OSHA standards for the construction industry.</p>
+        </div>
+
+        <!-- Oil & Energy -->
+        <div class="construction-ehs-feature-card">
+            <div class="construction-ehs-feature-icon">
+                <i class="fas fa-industry"></i>
+            </div>
+            <h3 class="construction-ehs-feature-title">Oil & Energy</h3>
+            <p class="construction-ehs-feature-desc">Specialized safety and environmental management solutions for the high-risk oil and energy sectors.</p>
+        </div>
+
+        <!-- Chemical & General -->
+        <div class="construction-ehs-feature-card">
+            <div class="construction-ehs-feature-icon">
+                <i class="fas fa-flask"></i>
+            </div>
+            <h3 class="construction-ehs-feature-title">Chemical & General</h3>
+            <p class="construction-ehs-feature-desc">EHS programs for chemical handling and common industrial sectors to ensure workforce and environmental safety.</p>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="construction-ehs-benefits">
+        <div class="construction-ehs-benefits-image">
+            <img
+                src="{% static 'images/Safety1.jpeg' %}"
+                alt="Construction Safety"
+                class="construction-ehs-image"
+            />
+        </div>
+        <div class="construction-ehs-benefits-content">
+            <h2 class="construction-ehs-benefits-title">Key Benefits</h2>
+            <ul class="construction-ehs-benefits-list">
+                <li class="construction-ehs-benefit-item">
+                    <i class="fas fa-plus-circle construction-ehs-benefit-icon"></i>
+                    <span class="construction-ehs-benefit-text">Tailored solutions for diverse industries.</span>
+                </li>
+                <li class="construction-ehs-benefit-item">
+                    <i class="fas fa-plus-circle construction-ehs-benefit-icon"></i>
+                    <span class="construction-ehs-benefit-text">Comprehensive guidance under OSHA standards.</span>
+                </li>
+                <li class="construction-ehs-benefit-item">
+                    <i class="fas fa-plus-circle construction-ehs-benefit-icon"></i>
+                    <span class="construction-ehs-benefit-text">Ensures compliance and reduces liability.</span>
+                </li>
+                <li class="construction-ehs-benefit-item">
+                    <i class="fas fa-plus-circle construction-ehs-benefit-icon"></i>
+                    <span class="construction-ehs-benefit-text">Promotes a culture of safety and excellence.</span>
+                </li>
+                <li class="construction-ehs-benefit-item">
+                    <i class="fas fa-plus-circle construction-ehs-benefit-icon"></i>
+                    <span class="construction-ehs-benefit-text">Contributes to organizational and personnel excellence.</span>
+                </li>
+                <li class="construction-ehs-benefit-item">
+                    <i class="fas fa-plus-circle construction-ehs-benefit-icon"></i>
+                    <span class="construction-ehs-benefit-text">Improves risk management with advanced protocols.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

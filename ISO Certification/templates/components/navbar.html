@@ -1,0 +1,225 @@
+<nav class="navbar-main">
+    <div class="navbar-container">
+        <!-- Gold accent strip -->
+        <div class="navbar-accent-strip"></div>
+        
+        <!-- White line separator -->
+        <div class="navbar-separator-line"></div>
+        
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-[60px] relative">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 relative z-10 pl-4 animate-fade-in-left">
+                    <a href="{% url 'home' %}" class="text-2xl font-bold text-white tracking-wide">ACS-GP</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center justify-between flex-1 pl-20">
+                    <div class="flex items-center space-x-10">
+                        <a href="{% url 'home' %}" class="navbar-menu-item text-white/90 hover:text-white transition-colors text-base font-medium cursor-pointer tracking-wide flex items-center">
+                            Home
+                        </a>
+                        
+                        <!-- Certifications Dropdown -->
+                        <div class="relative group navbar-menu-item">
+                            <span class="text-white/90 hover:text-white transition-colors text-base font-medium cursor-pointer tracking-wide flex items-center">
+                                Certifications
+                                <i class="fas fa-chevron-down ml-2 text-xs transition-transform group-hover:rotate-180"></i>
+                            </span>
+                            <div class="navbar-dropdown absolute top-full left-0 mt-2 w-72 bg-gradient-to-br from-[#1a2b4b] to-[#00809D] rounded-xl shadow-xl overflow-hidden z-50 border border-white/10" style="background: linear-gradient(135deg, #1a2b4b 0%, #00809D 100%) !important; border-radius: 0.75rem !important; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                                <a href="{% url 'certificate_detail' 'iso-30000' %}" class="dropdown-item group block relative">
+                                    <div class="flex items-center gap-3 px-8 py-3 hover:bg-white/5 transition-all duration-300">
+                                        <div class="text-secondary text-lg">
+                                            <i class="fas fa-certificate"></i>
+                                        </div>
+                                        <span class="text-white/90 group-hover:text-white transition-colors">
+                                            ISO 30000:2009
+                                        </span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-[1px] bg-secondary/30 transition-all duration-300 group-hover:w-full w-0"></div>
+                                </a>
+                                <a href="{% url 'certificate_detail' 'iso-17025' %}" class="dropdown-item group block relative">
+                                    <div class="flex items-center gap-3 px-8 py-3 hover:bg-white/5 transition-all duration-300">
+                                        <div class="text-secondary text-lg">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                        <span class="text-white/90 group-hover:text-white transition-colors">
+                                            ISO/IEC 17025:2005
+                                        </span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-[1px] bg-secondary/30 transition-all duration-300 group-hover:w-full w-0"></div>
+                                </a>
+                                <a href="{% url 'certificate_detail' 'ohsas-8001' %}" class="dropdown-item group block relative">
+                                    <div class="flex items-center gap-3 px-8 py-3 hover:bg-white/5 transition-all duration-300">
+                                        <div class="text-secondary text-lg">
+                                            <i class="fas fa-medal"></i>
+                                        </div>
+                                        <span class="text-white/90 group-hover:text-white transition-colors">
+                                            OHSAS 8001:2007
+                                        </span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-[1px] bg-secondary/30 transition-all duration-300 group-hover:w-full w-0"></div>
+                                </a>
+                                <a href="{% url 'certificate_detail' 'haccp' %}" class="dropdown-item group block relative">
+                                    <div class="flex items-center gap-3 px-8 py-3 hover:bg-white/5 transition-all duration-300">
+                                        <div class="text-secondary text-lg">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <span class="text-white/90 group-hover:text-white transition-colors">
+                                            HACCP
+                                        </span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-[1px] bg-secondary/30 transition-all duration-300 group-hover:w-full w-0"></div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Accreditation Dropdown -->
+                        <div class="relative group navbar-menu-item">
+                            <span class="text-white/90 hover:text-white transition-colors text-base font-medium cursor-pointer tracking-wide flex items-center">
+                                Accreditation
+                                <i class="fas fa-chevron-down ml-2 text-xs transition-transform group-hover:rotate-180"></i>
+                            </span>
+                            <div class="navbar-dropdown absolute top-full left-0 mt-2 w-72 bg-gradient-to-br from-[#1a2b4b] to-[#00809D] rounded-xl shadow-xl overflow-hidden z-50 border border-white/10" style="background: linear-gradient(135deg, #1a2b4b 0%, #00809D 100%) !important; border-radius: 0.75rem !important; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                                <a href="{% url 'construction_ehs' %}" class="dropdown-item group block relative">
+                                    <div class="flex items-center gap-3 px-8 py-3 hover:bg-white/5 transition-all duration-300">
+                                        <div class="text-secondary text-lg">
+                                            <i class="fas fa-hard-hat"></i>
+                                        </div>
+                                        <span class="text-white/90 group-hover:text-white transition-colors">
+                                            Construction EHS
+                                        </span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 h-[1px] bg-secondary/30 transition-all duration-300 group-hover:w-full w-0"></div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <a href="{% url 'about' %}" class="navbar-menu-item text-white/90 hover:text-white transition-colors text-base font-medium cursor-pointer tracking-wide">
+                            About us
+                        </a>
+                        <a href="{% url 'contact' %}" class="navbar-menu-item text-white/90 hover:text-white transition-colors text-base font-medium cursor-pointer tracking-wide">
+                            Contact us
+                        </a>
+                    </div>
+
+                    <!-- Verify Certificate Button -->
+                    <div class="verify-button">
+                        <a href="#" class="flex items-center space-x-2 bg-secondary text-[#1a2b4b] px-6 py-2.5 rounded-full hover:bg-secondary/90 transition-all duration-300 text-base font-medium shadow-lg hover:shadow-secondary/20 hover-scale">
+                            <span>Verify Certificate</span>
+                            <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white relative z-10" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <i class="fas fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden py-4 bg-[#1a2b4b] border-t border-white/10 relative z-20 hidden animate-fade-in-up">
+                <div class="flex flex-col space-y-4">
+                    <a href="{% url 'home' %}" class="text-white/90 hover:text-white transition-colors text-base font-medium px-4 tracking-wide block hover:bg-white/5 py-2 rounded-lg">
+                        Home
+                    </a>
+                    <!-- Mobile Certifications Dropdown -->
+                    <div class="mobile-dropdown-container">
+                        <button class="mobile-dropdown-toggle text-white/90 hover:text-white transition-colors text-base font-medium px-4 tracking-wide block hover:bg-white/5 py-2 rounded-lg w-full text-left flex items-center justify-between" onclick="toggleMobileCertifications()">
+                            <span>Certifications</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="mobile-certifications-chevron"></i>
+                        </button>
+                        <div id="mobile-certifications-dropdown" class="mobile-dropdown-content hidden">
+                            <a href="{% url 'certificate_detail' 'iso-30000' %}" class="mobile-dropdown-item">
+                                <div class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-all duration-300">
+                                    <div class="text-secondary text-lg">
+                                        <i class="fas fa-certificate"></i>
+                                    </div>
+                                    <span class="text-white/90 hover:text-white transition-colors">
+                                        ISO 30000:2009
+                                    </span>
+                                </div>
+                            </a>
+                            <a href="{% url 'certificate_detail' 'iso-17025' %}" class="mobile-dropdown-item">
+                                <div class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-all duration-300">
+                                    <div class="text-secondary text-lg">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <span class="text-white/90 hover:text-white transition-colors">
+                                        ISO/IEC 17025:2005
+                                    </span>
+                                </div>
+                            </a>
+                            <a href="{% url 'certificate_detail' 'ohsas-8001' %}" class="mobile-dropdown-item">
+                                <div class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-all duration-300">
+                                    <div class="text-secondary text-lg">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <span class="text-white/90 hover:text-white transition-colors">
+                                        OHSAS 8001:2007
+                                    </span>
+                                </div>
+                            </a>
+                            <a href="{% url 'certificate_detail' 'haccp' %}" class="mobile-dropdown-item">
+                                <div class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-all duration-300">
+                                    <div class="text-secondary text-lg">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <span class="text-white/90 hover:text-white transition-colors">
+                                        HACCP
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="{% url 'construction_ehs' %}" class="text-white/90 hover:text-white transition-colors text-base font-medium px-4 tracking-wide block hover:bg-white/5 py-2 rounded-lg">
+                        Construction EHS
+                    </a>
+                    <a href="{% url 'about' %}" class="text-white/90 hover:text-white transition-colors text-base font-medium px-4 tracking-wide block hover:bg-white/5 py-2 rounded-lg">
+                        About us
+                    </a>
+                    <a href="{% url 'contact' %}" class="text-white/90 hover:text-white transition-colors text-base font-medium px-4 tracking-wide block hover:bg-white/5 py-2 rounded-lg">
+                        Contact us
+                    </a>
+                    <div class="px-4 pt-4">
+                        <a href="#" class="flex items-center justify-center space-x-2 bg-secondary text-[#1a2b4b] px-6 py-2.5 rounded-full hover:bg-secondary/90 transition-all duration-300 text-base font-medium shadow-lg hover:shadow-secondary/20 hover-scale">
+                            <span>Verify Certificate</span>
+                            <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+    } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+    }
+}
+
+function toggleMobileCertifications() {
+    const dropdown = document.getElementById('mobile-certifications-dropdown');
+    const chevron = document.getElementById('mobile-certifications-chevron');
+    
+    if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        chevron.style.transform = 'rotate(180deg)';
+    } else {
+        dropdown.classList.add('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+    }
+}
+</script>

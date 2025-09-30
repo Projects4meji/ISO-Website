@@ -1,0 +1,231 @@
+{% load static %}
+<section id="certifications" class="certifications-section">
+    <div class="container mx-auto px-4">
+        <div class="certifications-header animate-fade-in-up">
+            <span class="certifications-subtitle animate-text-reveal animate-delay-200">Certifications</span>
+            <h2 class="certifications-title animate-text-reveal animate-delay-300">
+                ACS-GP offering Accreditation
+            </h2>
+            <p class="certifications-description animate-text-reveal animate-delay-400">
+                for you & your business
+            </p>
+        </div>
+
+        <div class="certifications-carousel">
+            <!-- Navigation Buttons -->
+            <button class="certifications-nav-btn certifications-nav-prev" onclick="prevSlide()" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <button class="certifications-nav-btn certifications-nav-next" onclick="nextSlide()" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Carousel Container -->
+            <div class="certifications-carousel-container">
+                <div class="certifications-slide-container" id="slideContainer">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div class="certifications-indicators" id="indicators">
+                <!-- Dynamic indicators will be inserted here -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Certifications data
+const certifications = [
+    {
+        id: 1,
+        name: 'ISO 30000 2009',
+        icon: 'fas fa-certificate',
+        description: 'Ship recycling management systems certification for safe and environmentally sound ship recycling facilities.',
+        path: "{% url 'certificate_detail' 'iso-30000' %}"
+    },
+    {
+        id: 2,
+        name: 'ISO/IEC 17025 2005',
+        icon: 'fas fa-award',
+        description: 'Testing and calibration laboratories competence certification for accurate and reliable results.',
+        path: "{% url 'certificate_detail' 'iso-17025' %}"
+    },
+    {
+        id: 3,
+        name: 'OHSAS 8001 2007',
+        icon: 'fas fa-medal',
+        description: 'Occupational health and safety management certification for workplace safety excellence.',
+        path: "{% url 'certificate_detail' 'ohsas-8001' %}"
+    },
+    {
+        id: 4,
+        name: 'HACCP',
+        icon: 'fas fa-shield-alt',
+        description: 'Food safety management system certification for identifying and controlling hazards.',
+        path: "{% url 'certificate_detail' 'haccp' %}"
+    }
+];
+
+let currentIndex = 0;
+let direction = 0;
+
+// Get visible card count based on screen width
+function getVisibleCardCount() {
+    const width = window.innerWidth;
+    if (width < 640) return 1; // Mobile: 1 card
+    if (width < 1024) return 2; // Tablet: 2 cards
+    return 3; // Desktop: 3 cards
+}
+
+// Get visible certifications for current slide
+function getVisibleCertifications() {
+    const visibleCards = [];
+    const totalCards = certifications.length;
+    const cardCount = getVisibleCardCount();
+    
+    for (let i = 0; i < cardCount; i++) {
+        const index = (currentIndex + i) % totalCards;
+        visibleCards.push(certifications[index]);
+    }
+    
+    return visibleCards;
+}
+
+// Create certification card HTML
+function createCertificationCard(certification) {
+    return `
+        <div class="flex justify-center">
+            <a href="${certification.path}" class="certification-card">
+                <div class="certification-card-bg">
+                    <img src="{% static 'images/Mastering ISO_IEC 27001_2022 - Exercise 10 Walkthrough.jpeg' %}" alt="Certification Background">
+                </div>
+                <div class="certification-card-content">
+                    <div class="certification-icon-container">
+                        <div class="certification-icon-bg">
+                            <i class="${certification.icon} certification-icon"></i>
+                        </div>
+                        <div class="certification-icon-ring"></div>
+                    </div>
+                    <div class="certification-header">
+                        <i class="fas fa-check-circle certification-check"></i>
+                        <h3 class="certification-name">${certification.name}</h3>
+                    </div>
+                    <p class="certification-description">
+                        ${certification.description}
+                    </p>
+                    <div class="certification-line"></div>
+                </div>
+            </a>
+        </div>
+    `;
+}
+
+// Create grid class based on visible card count
+function getGridClass() {
+    const cardCount = getVisibleCardCount();
+    if (cardCount === 1) {
+        return 'w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto px-4';
+    } else if (cardCount === 2) {
+        return 'w-[95%] lg:w-[85%] mx-auto px-2';
+    } else {
+        return 'w-[98%] lg:w-[90%] mx-auto';
+    }
+}
+
+// Render the carousel content with smooth transitions
+function renderCarousel(animate = true) {
+    const slideContainer = document.getElementById('slideContainer');
+    const indicators = document.getElementById('indicators');
+    const visibleCerts = getVisibleCertifications();
+    const gridClass = getGridClass();
+    
+    // Create new slide content
+    const slideContent = `
+        <div class="certifications-slide ${animate ? 'slide-in-' + (direction > 0 ? 'left' : 'right') : 'active'}">
+            <div class="certifications-grid ${gridClass}">
+                ${visibleCerts.map(cert => createCertificationCard(cert)).join('')}
+            </div>
+        </div>
+    `;
+    
+    if (animate) {
+        // Add new slide
+        slideContainer.insertAdjacentHTML('beforeend', slideContent);
+        
+        // Get slides
+        const slides = slideContainer.querySelectorAll('.certifications-slide');
+        const currentSlide = slides[slides.length - 2]; // Previous slide
+        const newSlide = slides[slides.length - 1]; // New slide
+        
+        // Animate out current slide and in new slide
+        if (currentSlide) {
+            currentSlide.classList.add('slide-out-' + (direction > 0 ? 'right' : 'left'));
+            currentSlide.classList.remove('active');
+        }
+        
+        // Clean up old slides after animation
+        setTimeout(() => {
+            if (currentSlide) {
+                currentSlide.remove();
+            }
+            newSlide.classList.remove('slide-in-left', 'slide-in-right');
+            newSlide.classList.add('active');
+        }, 600); // Match CSS transition duration
+    } else {
+        // Initial render without animation
+        slideContainer.innerHTML = slideContent;
+    }
+    
+    // Create indicators
+    const indicatorsHTML = certifications.map((_, index) => `
+        <button class="certifications-indicator ${index === currentIndex ? 'active' : ''}" 
+                onclick="goToSlide(${index})" 
+                aria-label="Go to slide ${index + 1}">
+        </button>
+    `).join('');
+    
+    indicators.innerHTML = indicatorsHTML;
+}
+
+// Navigation functions
+function nextSlide() {
+    direction = 1;
+    currentIndex = (currentIndex + 1) % certifications.length;
+    renderCarousel(true);
+}
+
+function prevSlide() {
+    direction = -1;
+    currentIndex = (currentIndex - 1 + certifications.length) % certifications.length;
+    renderCarousel(true);
+}
+
+function goToSlide(index) {
+    if (index === currentIndex) return; // Don't animate if already on this slide
+    direction = index > currentIndex ? 1 : -1;
+    currentIndex = index;
+    renderCarousel(true);
+}
+
+// Handle window resize
+function handleResize() {
+    renderCarousel();
+}
+
+// Initialize carousel
+function initCarousel() {
+    renderCarousel(false); // No animation on initial load
+    
+    // Auto-advance slides every 5 seconds
+    setInterval(nextSlide, 5000);
+    
+    // Handle window resize
+    window.addEventListener('resize', handleResize);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initCarousel);
+</script>
