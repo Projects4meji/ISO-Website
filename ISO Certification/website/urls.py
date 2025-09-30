@@ -1,5 +1,5 @@
 """
-URL configuration for iso_website project.
+URL configuration for website project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -15,10 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
-    path('certifications/', include('certificates.urls')),
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('construction-ehs/', views.construction_ehs, name='construction_ehs'),
+    path('certifications/', views.certifications, name='certifications'),
+    path('certifications/<slug:slug>/', views.certificate_detail, name='certificate_detail'),
 ]
